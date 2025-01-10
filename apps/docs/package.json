@@ -1,27 +1,22 @@
 {
-  "name": "docs",
-  "version": "0.1.0",
+  "name": "@hyperionu/docs",
   "type": "module",
-  "private": true,
+  "version": "0.0.1",
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint --max-warnings 0",
-    "check-types": "tsc --noEmit"
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
   "dependencies": {
-    "@repo/ui": "workspace:*",
-    "next": "^15.1.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
-  },
-  "devDependencies": {
-    "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*",
-    "@types/node": "^20",
-    "@types/react": "18.3.1",
-    "@types/react-dom": "18.3.0",
-    "typescript": "5.5.4"
+    "@astrojs/mdx": "^4.0.4",
+    "@astrojs/starlight": "^0.30.5",
+    "astro": "^5.0.2",
+    "sharp": "^0.32.5",
+    "starlight-heading-badges": "^0.4.0",
+    "starlight-package-managers": "^0.9.0",
+    "starlight-theme-catppuccin": "2.0.0",
+    "starlight-sidebar-topics": "0.3.0"
   }
 }
