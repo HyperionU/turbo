@@ -1,0 +1,84 @@
+---
+title: hu-config
+description: Install and configure HyperionUI / Nitrox (hu-config)
+---
+import { Steps, Aside, Tabs, TabItem } from "@astrojs/starlight/components"
+import { PackageManagers } from "starlight-package-managers"
+
+<Steps>
+
+1. Create Project.
+  <PackageManagers type="dlx" pkg="hu-config" />
+
+2. Follow the `hu-config` Prompts.
+
+  ```text
+  - What is your name? (name)
+  - (name), are you using [packageManager]? Y/n
+  - Great! Noted.
+  - So (name), which set would you like to install? Custom
+  - Which packages would you like to install?: Marp for VS Code, Prettier 
+  ```
+
+3. Configure your Astro project.
+
+  ```text
+  - Where should we create your new project? ./your-app-name
+  - How would you like to start your new project? Choose a template
+  - Do you plan to write TypeScript? Yes
+  - How strict should TypeScript be? Strict
+  - Install dependencies? Yes
+  - Initialize a new git repository? (optional) Yes/No
+  ```
+
+4. Answer `Yes` when prompted by the CLI when installing React and Tailwind.
+
+5. Finish all other configuration, then select `Yes`.
+
+    <Tabs>
+      <TabItem label="Styles">
+      ```css title="styles/global.css"
+      @tailwind base;
+      @tailwind components;
+      @tailwind utilities;
+      ```
+      </TabItem>
+      <TabItem label="Astro">
+      ```astro title="src/pages/index.astro"
+      ---
+      import '@/styles/global.css'
+      ---
+      ```
+      </TabItem>
+      <TabItem label="Astro Config">
+      ```ts title="astro.config.ts"
+      export default defineConfig({
+        integrations: [
+          tailwind({
+            applyBaseStyles: false,
+          }),
+        ],
+      }) satisfies AstroUserConfig
+      ```
+      </TabItem>
+      <TabItem label="tsConfig">
+      ```json title="tsconfig.json"
+      {
+        "compilerOptions": {
+          // ...
+          "baseUrl": ".",
+          "paths": {
+            "@/*": [
+              "./src/*"
+            ]
+          }
+          // ...
+        }
+      }
+      ```
+      </TabItem>
+    </Tabs>
+
+6. Follow the prompts to set up components.
+
+</Steps>
