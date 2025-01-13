@@ -2,67 +2,76 @@
 title: hu-config
 description: Install and configure HyperionUI / Nitrox (hu-config)
 ---
-import { Steps, Aside, Tabs, TabItem } from "@astrojs/starlight/components"
+import { Steps, Tabs, TabItem } from "@astrojs/starlight/components"
 import { PackageManagers } from "starlight-package-managers"
+
+<PackageManagers type="dlx" pkg="hu-config" />
 
 <Steps>
 
-1. Create Project.
-  <PackageManagers type="dlx" pkg="hu-config" />
+1. Follow the `hu-config` Prompts.
 
-2. Follow the `hu-config` Prompts.
+    ```text
+    - What is your name? (name)
+    - (name), are you using [packageManager]? Y/n
+    - Great! Noted.
+    - So (name), which set would you like to install? Custom
+    - Which packages would you like to install?: Marp for VS Code, Prettier 
+    ```
 
-  ```text
-  - What is your name? (name)
-  - (name), are you using [packageManager]? Y/n
-  - Great! Noted.
-  - So (name), which set would you like to install? Custom
-  - Which packages would you like to install?: Marp for VS Code, Prettier 
-  ```
+2. Configure your Astro project.
 
-3. Configure your Astro project.
+   <PackageManagers type="create" pkg="astro" />
 
-  ```text
-  - Where should we create your new project? ./your-app-name
-  - How would you like to start your new project? Choose a template
-  - Do you plan to write TypeScript? Yes
-  - How strict should TypeScript be? Strict
-  - Install dependencies? Yes
-  - Initialize a new git repository? (optional) Yes/No
-  ```
+    ```text
+    - Where should we create your new project? ./your-app-name
+    - How would you like to start your new project? Choose a template
+    - Do you plan to write TypeScript? Yes
+    - How strict should TypeScript be? Strict
+    - Install dependencies? Yes
+    - Initialize a new git repository? (optional) Yes/No
+    ```
 
-4. Answer `Yes` when prompted by the CLI when installing React and Tailwind.
+3. Answer `Yes` when prompted by the CLI when installing React and Tailwind.
 
-5. Finish all other configuration, then select `Yes`.
+   <PackageManagers type="exec" pkg="astro" args="add react tailwind" />
+
+4. Finish all other configuration, then select `Yes`.
 
     <Tabs>
       <TabItem label="Styles">
-      ```css title="styles/global.css"
+      ```css title="styles/global.css" ins={1-3}
       @tailwind base;
       @tailwind components;
       @tailwind utilities;
       ```
       </TabItem>
       <TabItem label="Astro">
-      ```astro title="src/pages/index.astro"
+      ```astro title="src/pages/index.astro" ins={1-3}
       ---
       import '@/styles/global.css'
       ---
       ```
       </TabItem>
       <TabItem label="Astro Config">
-      ```ts title="astro.config.ts"
+      ```js title="astro.config.mjs" del={7} ins={8-10}
+      import { defineConfig } from 'astro/config';
+
+      import react from '@astrojs/react';
+      import tailwind from '@astrojs/tailwind';
       export default defineConfig({
         integrations: [
-          tailwind({
-            applyBaseStyles: false,
-          }),
+            tailwind(),
+            tailwind({
+                applyBaseStyles: false,
+            }),
+            react()
         ],
-      }) satisfies AstroUserConfig
+      })
       ```
       </TabItem>
       <TabItem label="tsConfig">
-      ```json title="tsconfig.json"
+      ```json title="tsconfig.json" ins={4-9}
       {
         "compilerOptions": {
           // ...
