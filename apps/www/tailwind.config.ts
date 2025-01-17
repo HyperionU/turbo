@@ -1,8 +1,14 @@
-/** @type {import('tailwindcss').Config} */
+import { type Config } from 'tailwindcss'
+import defaultTheme from 'tailwindcss/defaultTheme'
+
 export default {
     darkMode: ['class'],
     content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
+		fontFamily: {
+			sans: ['Geist', ...defaultTheme.fontFamily.sans],
+			mono: ['"Geist Mono"', ...defaultTheme.fontFamily.mono]
+		},
     	extend: {
     		borderRadius: {
     			lg: 'var(--radius)',
@@ -49,9 +55,12 @@ export default {
     				'3': 'hsl(var(--chart-3))',
     				'4': 'hsl(var(--chart-4))',
     				'5': 'hsl(var(--chart-5))'
-    			}
-    		}
+    			},
+				mint: 'oklch(var(--mint))',
+				cardinal: 'oklch(var(--cardinal))',
+				napoli: 'oklch(var(--napoli))',
+    		},
     	}
     },
 	plugins: [require("tailwindcss-animate"), require("@lorenzopalaia/tailwind-hero-patterns")],
-}
+} satisfies Config;
