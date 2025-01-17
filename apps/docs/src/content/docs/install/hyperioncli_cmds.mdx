@@ -1,42 +1,38 @@
 ---
-title: hu-config
-description: Install and configure HyperionUI / Nitrox (hu-config)
+title: hyperioncli (Commands)
 ---
 import { Steps, Tabs, TabItem } from "@astrojs/starlight/components"
 import PkgManager from "@/components/pkgManager.astro"
 
-<PkgManager type="dlx" pkg="hu-config" />
+<PkgManager type="dlx" pkg="hyperioncli@unstable-flake" args="<command> [options]" />
 
 <Steps>
 
-1. Follow the `hu-config` Prompts.
+1. Follow the `hyperioncli` prompts.
 
-    ```text
-    - What is your name? (name)
-    - (name), are you using [packageManager]? Y/n
-    - Great! Noted.
-    - So (name), which set would you like to install? Custom
-    - Which packages would you like to install?: Marp for VS Code, Prettier 
-    ```
+    <Tabs>
+        <TabItem label="Turbo">
+            ```text
+            1. Welcome to Turbo. Let's get started.
+                - What is the path to your new turborepo? ./(turboPath)
+            ```
+        </TabItem>
+        <TabItem label="Nitrox">
+            ```text
+            1. Welcome to Nitrox. Let's get you up and running.
+                - What is the path to your new site? ./(sitePath)
+                - How strict should TypeScript be? Strict
+                - Install dependencies? Y/n
+                - Initialize a Git repository? Y/n
+            2. Now, let's add some integrations.
+                - Which UI integrations do you want to add? React, (others)
+                - Would you like to add an SSR Adapter? (Adapter)
+                - Would you like to add any other integrations? Tailwind, (others)
+            ```
+        </TabItem>
+    </Tabs>
 
-2. Configure your Astro project.
-
-   <PkgManager type="create" pkg="astro" />
-
-    ```text
-    - Where should we create your new project? ./your-app-name
-    - How would you like to start your new project? Choose a template
-    - Do you plan to write TypeScript? Yes
-    - How strict should TypeScript be? Strict
-    - Install dependencies? Yes
-    - Initialize a new git repository? (optional) Yes/No
-    ```
-
-3. Answer `Yes` when prompted by the CLI when installing React and Tailwind.
-
-   <PkgManager type="exec" pkg="astro" args="add react tailwind" />
-
-4. Finish all other configuration, then select `Yes`.
+2. Finish all other configuration, if your running Nitrox.
 
     <Tabs>
       <TabItem label="Styles">
@@ -88,6 +84,7 @@ import PkgManager from "@/components/pkgManager.astro"
       </TabItem>
     </Tabs>
 
-6. Follow the prompts to set up components.
+3. Initialize shadcn/ui.
+    <PkgManager type="dlx" pkg="shadcn@latest init"/>
 
 </Steps>

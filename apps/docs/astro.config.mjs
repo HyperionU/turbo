@@ -26,7 +26,9 @@ export default defineConfig({
                         {label: "Installation", slug: 'install'},
                         {label: "Installation", items: [
                             {label: "hu-config", slug: 'install/huconfig'},
-                            {label: "hyperioncli (Latest)", slug: "install/hyperioncli_latest"}
+                            {label: "hyperioncli (Latest)", slug: "install/hyperioncli_latest"},
+                            {label: "hyperioncli (init Command)", slug: "install/hyperioncli_init"},
+                            {label: "hyperioncli (Commands)", slug: "install/hyperioncli_cmds"}
                         ], collapsed: false}
                     ]
                 }
