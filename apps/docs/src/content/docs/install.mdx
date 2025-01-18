@@ -2,10 +2,30 @@
 title: Installation
 description: Install and configure HyperionUI / Nitrox
 ---
-import {LinkCard, Aside} from "@astrojs/starlight/components"
+import {LinkCard, Aside, CardGrid} from "@astrojs/starlight/components"
+
+# Overview
+
+Hyperion University has two different CLI tools to set up your workspace and Nitrox.
+- hu-config
+    - latest / 2.0.0 (workspace)
+- hyperioncli
+    - latest / 1.6.0 (workspace, Turbo, Nitrox)
+    - unstable / 2.0.0-2 (workspace, Turbo, Nitrox, shadcn/ui)
 
 <Aside>
-    As of now, use ***hu-config***. Once ***hucli*** is released, ***hu-config*** will be deprecated.
+    As of now, use ***hu-config*** or ***hyperioncli (latest)***. Once ***hyperioncli v2.0.0*** is released, ***hu-config*** will be deprecated.
 </Aside>
 
+## hu-config
+
 <LinkCard title="Using hu-config (2.0.0)" href="/install/huconfig" />
+
+## hyperioncli
+
+<CardGrid>
+    <LinkCard title="Using hyperioncli (latest)" href="/install/hyperioncli_latest" />
+    <LinkCard title="Using hyperioncli (init)" href="/install/hyperioncli_init" />
+    <LinkCard title="Using hyperioncli (cmds)" href="/install/hyperioncli_cmds" />
+    <LinkCard title="Using hyperioncli (flakes)" href="/install/hyperioncli_flake" />
+</CardGrid>

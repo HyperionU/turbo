@@ -1,0 +1,68 @@
+---
+title: hyperioncli (flake Commands)
+---
+
+import { Steps, Tabs, TabItem } from "@astrojs/starlight/components";
+import PkgManager from "@/components/pkgManager.astro";
+
+<PkgManager
+  type="dlx"
+  pkg="hyperioncli@unstable-flake"
+  args="flake [options] [command] <flake>"
+/>
+
+<Steps>
+
+1.  Initialize a new flake.
+
+    <PkgManager
+      type="dlx"
+      pkg="hyperioncli@unstable-flake"
+      args="flake init [dir]"
+      comment="[dir] defaults to current directory."
+    />
+
+2.  Write configuration in the flake.
+
+    ```json
+    // [dir]/flake.json
+    {
+        /* Schema used for the flake. */
+        "$schema": "https://raw.githubusercontent.com/HyperionU/hyperioncli/refs/heads/unstable/src/utils/schema/flake.json",
+        /* Description of flake. */
+        "description": "Example flake",
+        /* Package Manager to use. */
+        "packageManager": "[packageManager]",
+        /* Services that can be configured using `options`. */
+        "services": {
+            /* ... */
+        },
+        /* Options for the enabled services. */
+        "options": {
+            /* VSCode extentions to install (PackageSet). */
+            "packageSet": {
+                /* ... */ 
+            },
+            /* Path to new Turborepo. (Turbo) */
+            "turboPath": /* ... */,
+            /* Configuration for a new Nitrox site (Nitrox / Astro) */
+            "nitrox": {
+                /* ... */
+            }
+        },
+        /* Options for overriding Turborepo's template apps. */
+        "turboOverrides": {
+            /* ... */
+        }
+    }
+    ```
+
+3. Run the flake command.
+
+    <PkgManager
+        type="dlx"
+        pkg="hyperioncli@unstable-flake"
+        args="flake <flake-file>"
+    />
+
+</Steps>
