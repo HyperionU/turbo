@@ -10,7 +10,12 @@ import starlightSidebarTopicsPlugin from 'starlight-sidebar-topics';
 // https://astro.build/config
 export default defineConfig({
     integrations: [starlight({
-        title: 'My Docs',
+        title: 'U of H Docs',
+        favicon: "/emblem.svg",
+        logo: {
+          dark: "./src/assets/logo/emblem.svg",
+          light: "./src/assets/logo/emblem-light.svg"  
+        },
         social: {
             github: 'https://github.com/withastro/starlight',
         },
@@ -28,8 +33,9 @@ export default defineConfig({
                             {label: "hu-config", slug: 'install/huconfig'},
                             {label: "hyperioncli (Latest)", slug: "install/hyperioncli_latest"},
                             {label: "hyperioncli (init Command)", slug: "install/hyperioncli_init"},
-                            {label: "hyperioncli (Commands)", slug: "install/hyperioncli_cmds"}
-                        ], collapsed: false}
+                            {label: "hyperioncli (Commands)", slug: "install/hyperioncli_cmds"},
+                            {label: "hyperioncli (Flakes)", slug: "install/hyperioncli_flake"}
+                        ], collapsed: true}
                     ]
                 }
             ]),
