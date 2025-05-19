@@ -3,7 +3,7 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 
 import mdx from '@astrojs/mdx';
-import catppuccin from 'starlight-theme-catppuccin'
+import catppuccin from '@catppuccin/starlight'
 import starlightHeadingBadgesPlugin from 'starlight-heading-badges';
 import starlightSidebarTopicsPlugin from 'starlight-sidebar-topics';
 
@@ -16,11 +16,14 @@ export default defineConfig({
           dark: "./src/assets/logo/emblem.svg",
           light: "./src/assets/logo/emblem-light.svg"  
         },
-        social: {
-            github: 'https://github.com/withastro/starlight',
-        },
+        social: [
+            {icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight'},
+        ],
         plugins: [
-            catppuccin({dark: "mocha-red", light: "latte-red"}),
+            catppuccin({
+                dark: { flavor: "mocha", accent: "red" },
+                light: { flavor: "latte", accent: "red" }
+            }),
             starlightHeadingBadgesPlugin(),
             starlightSidebarTopicsPlugin([
                 {
