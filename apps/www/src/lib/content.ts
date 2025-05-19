@@ -64,7 +64,7 @@ export const projectList: Project[] = [
       "A repository of notes and presentations by Hyperion University.",
   },
   {
-    title: "HyperionU Live",
+    title: "HyperionU Live (DEPRECATED)",
     href: "https://git.new/huLive",
     description:
       "A series of live lectures diving into the depths of mathematics.",
