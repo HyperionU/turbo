@@ -79,10 +79,17 @@ export function NavMenu() {
   )
 }
  
-const ListItem = React.forwardRef<
-  React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a">
->(({ className, title, children, ...props }, ref) => {
+const ListItem = (
+  {
+    ref,
+    className,
+    title,
+    children,
+    ...props
+  }: React.ComponentPropsWithoutRef<"a"> & {
+    ref: React.RefObject<React.ElementRef<"a">>;
+  }
+) => {
   return (
     <li>
       <NavigationMenuLink asChild>
@@ -102,5 +109,5 @@ const ListItem = React.forwardRef<
       </NavigationMenuLink>
     </li>
   )
-})
+}
 ListItem.displayName = "ListItem"

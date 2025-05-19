@@ -26,7 +26,7 @@ function CalcCarousel(card: CarouselCard[]){
                     <CardTitle>{game.title}</CardTitle>
                     <CardDescription>{game.description}</CardDescription>
                 </CardHeader>
-                <CardContent className="flex items-center justify-center rounded pattern-hexagons dark:pattern-overlapping-hexagons bg-mint transition-colors h-full">
+                <CardContent className="flex items-center justify-center rounded bg-mint transition-colors h-full">
                   <Button asChild>
                     <a href={game.ref} className="transition-colors">Play</a>
                   </Button>
